@@ -16,6 +16,7 @@
   <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>11</java.version>
+    <swagger-2.version>2.9.2</swagger-2.version>
   </properties>
   <dependencies>
     <dependency>
@@ -48,6 +49,16 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${swagger-2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${swagger-2.version}</version>
     </dependency>
   </dependencies>
 
