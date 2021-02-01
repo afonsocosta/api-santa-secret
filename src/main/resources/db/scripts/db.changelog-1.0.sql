@@ -9,7 +9,7 @@ CREATE TABLE santa_secret.user(
     `cellphone` INT NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE santa_secret.group(
+CREATE TABLE santa_secret.group_tb(
     `id` BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(50) NOT NULL,
     `owner_user_id` BIGINT(20) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE santa_secret.draw(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-ALTER TABLE `santa_secret`.`group`
+ALTER TABLE `santa_secret`.`group_tb`
 ADD CONSTRAINT `fk_group_user`
   FOREIGN KEY (`owner_user_id`)
   REFERENCES `santa_secret`.`user` (`id`)
@@ -43,7 +43,7 @@ ADD CONSTRAINT `fk_group_user`
 ALTER TABLE `santa_secret`.`participant`
   ADD CONSTRAINT `fk_participant_group`
     FOREIGN KEY (`group_id`)
-    REFERENCES `santa_secret`.`group` (`id`)
+    REFERENCES `santa_secret`.`group_tb` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_participant_user`
@@ -55,7 +55,7 @@ ALTER TABLE `santa_secret`.`participant`
 ALTER TABLE `santa_secret`.`draw`
   ADD CONSTRAINT `fk_draw_group`
     FOREIGN KEY (`group_id`)
-    REFERENCES `santa_secret`.`group` (`id`)
+    REFERENCES `santa_secret`.`group_tb` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_draw_user_from`
@@ -70,6 +70,6 @@ ALTER TABLE `santa_secret`.`draw`
     ON UPDATE NO ACTION;
 
 --rollback DROP TABLE santa_secret.user;
---rollback DROP TABLE santa_secret.group;
+--rollback DROP TABLE santa_secret.group_tb;
 --rollback DROP TABLE santa_secret.participant;
 --rollback DROP TABLE santa_secret.draw;

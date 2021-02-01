@@ -1,20 +1,13 @@
 package br.com.santasecret.api.entity;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import lombok.Data;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 @Entity
-@Table(schema = "santa_secret", name = "group")
+@Table(schema = "santa_secret", name = "group_tb")
 @Data
 public class Group implements Serializable {
 
@@ -28,8 +21,8 @@ public class Group implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_user_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "owner_user_id", updatable = false)
     private User owner;
 
     @Column(name = "creation_date")

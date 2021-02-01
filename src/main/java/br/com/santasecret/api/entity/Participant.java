@@ -1,16 +1,9 @@
 package br.com.santasecret.api.entity;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(schema = "santa_secret", name = "participant")
@@ -29,7 +22,7 @@ public class Participant implements Serializable {
     public Group group;
 
     @ManyToOne
-    @JoinColumn(name = "used_id")
+    @JoinColumn(name = "user_id")
     public User user;
 
     @Column(name = "checked")
