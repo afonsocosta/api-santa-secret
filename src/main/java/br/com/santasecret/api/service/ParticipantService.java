@@ -1,8 +1,11 @@
 package br.com.santasecret.api.service;
 
-import org.springframework.stereotype.Service;
+import br.com.santasecret.api.dto.ParticipantDto;
 
-@Service
+import java.util.List;
+
 public interface ParticipantService {
+
+    List<ParticipantDto> findByGroupId(Long groupId);
 
 }
