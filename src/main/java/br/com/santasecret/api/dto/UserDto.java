@@ -10,8 +10,7 @@ public class UserDto {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 
-    @NotBlank(message = "Email cannot be blank")
-    private String email;
+    private CredentialDto credential;
 
     @NotBlank(message = "Cellphone cannot be blank")
     private String cellphone;

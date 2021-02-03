@@ -11,11 +11,13 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface ParticipantMapper {
 
+    @Mapping(target = "group.owner", ignore = true)
     @Mapping(target = "group", source = "group")
     @Mapping(target = "user", source = "user")
     @Mapping(target = "checked", source = "checked")
     ParticipantDto toParticipantDto(Participant participant);
 
+    @Mapping(target = "group.owner", ignore = true)
     @Mapping(target = "group", source = "group")
     @Mapping(target = "user", source = "user")
     @Mapping(target = "checked", source = "checked")

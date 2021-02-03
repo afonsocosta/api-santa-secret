@@ -11,9 +11,10 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface GroupMapper {
 
+
     @Mapping(target = "name", source = "name")
-    @Mapping(target = "owner", source = "owner")
     @Mapping(target = "eventDate", source = "eventDate")
+    @Mapping(target = "ownerEmail", source = "owner.credential.email")
     List<GroupDto> toGroupDto(List<Group> group);
 
     @Mapping(target = "id", ignore = true)
@@ -23,4 +24,5 @@ public interface GroupMapper {
     @Mapping(target = "owner", source = "owner")
     @Mapping(target = "eventDate", source = "eventDate")
     Group toGroup(GroupDto groupDto);
+
 }
