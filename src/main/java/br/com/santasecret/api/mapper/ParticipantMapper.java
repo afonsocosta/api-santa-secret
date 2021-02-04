@@ -14,6 +14,7 @@ public interface ParticipantMapper {
     @Mapping(target = "group.owner", ignore = true)
     @Mapping(target = "group", source = "group")
     @Mapping(target = "user", source = "user")
+    @Mapping(target = "user.credential.password", ignore = true)
     @Mapping(target = "checked", source = "checked")
     ParticipantDto toParticipantDto(Participant participant);
 

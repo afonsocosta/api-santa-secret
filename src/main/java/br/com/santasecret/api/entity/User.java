@@ -25,4 +25,5 @@ public class User implements Serializable {
 
     @Column(name = "credential")
     private Credential credential;
+    
 }

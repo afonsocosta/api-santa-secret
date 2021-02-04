@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ public class UserController {
 
     private final UserService userService;
 
+    private final PasswordEncoder passwordEncoder;
+
     @GetMapping
     public ResponseEntity<User> findById() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.findById(1l));
@@ -28,6 +31,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<Response<UserDto>> createUser(@Valid @RequestBody UserDto userDto) {
+        userDto.getCredential().setPassword(passwordEncoder.encode(userDto.getCredential().getPassword()));
         Response<UserDto> response = new Response<>();
         response.setData(userService.createUser(userDto));
         response.setStatusCode(HttpStatus.CREATED.value());
