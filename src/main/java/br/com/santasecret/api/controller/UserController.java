@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 @Api(tags = SwaggerConfig.USER)
 @RestController
 @RequestMapping("/api/v1/user")
+@PreAuthorize(value = "#oauth2.hasScope('write')")
 @RequiredArgsConstructor
 public class UserController {
 

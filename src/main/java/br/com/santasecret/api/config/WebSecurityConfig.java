@@ -4,6 +4,7 @@ import br.com.santasecret.api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,9 +20,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserService userService;
 
     @Bean
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
+
+    @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Autowired
     public void globalConfiguration(AuthenticationManagerBuilder auth, UserService userService) throws Exception {
