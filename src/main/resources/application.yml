@@ -3,6 +3,12 @@ spring:
     url: jdbc:mysql://localhost:3306/santa_secret?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource-oauth:
+    url: jdbc:mysql://localhost:3306/sc_security?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   liquibase:

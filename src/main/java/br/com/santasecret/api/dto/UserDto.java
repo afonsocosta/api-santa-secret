@@ -14,5 +14,6 @@ public class UserDto {
 
     @NotBlank(message = "Cellphone cannot be blank")
     private String cellphone;
+    
 
 }

@@ -20,10 +20,13 @@ public class User implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "role")
+    private String role;
+
     @Column(name = "cellphone")
     private String cellphone;
 
     @Column(name = "credential")
     private Credential credential;
-    
+
 }

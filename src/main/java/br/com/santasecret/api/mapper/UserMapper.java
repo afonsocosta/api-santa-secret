@@ -16,6 +16,7 @@ public interface UserMapper {
     UserDto toUserDto(User user);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "role", ignore = true)
     @Mapping(target = "name", source = "name")
     @Mapping(target = "credential", source = "credential")
     @Mapping(target = "cellphone", source = "cellphone")
